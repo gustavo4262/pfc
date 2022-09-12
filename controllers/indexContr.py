@@ -1,4 +1,6 @@
-from flask import Response, request
+from flask import Response, request, jsonify
+from math import sin
 
 def indexContr():
-    return 'Hello World'
+    data = [[(x, sin(x / 10.)) for x in range(0, 101)]]
+    return  jsonify({'data': data})
