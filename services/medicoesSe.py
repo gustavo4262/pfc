@@ -1,4 +1,4 @@
-from ..repositories.medicoesRepo import pegaMedicaoRepo, postaMedicaoRepo
+from repositories.medicoesRepo import pegaMedicaoRepo, postaMedicaoRepo
 from flask import jsonify
 
 def postaMedicaoSe(paciente, tipoDados, valor):

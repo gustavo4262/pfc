@@ -1,6 +1,6 @@
 from flask import Response, request
-from ..services.usuarioSe import criaUsuarioSe, adicionaPacienteAMedicoSe
-from ..utils.validate import validateBooleanEssential, validateStringEssential
+from services.usuarioSe import criaUsuarioSe, adicionaPacienteAMedicoSe
+from utils.validate import validateBooleanEssential, validateStringEssential
 
 def criaUsuarioContr():
     try:

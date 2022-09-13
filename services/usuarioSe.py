@@ -1,4 +1,4 @@
-from ..repositories.usuarioRepo import criaUsuarioRepo, adicionaPacienteAMedicoRepo
+from repositories.usuarioRepo import criaUsuarioRepo, adicionaPacienteAMedicoRepo
 
 def criaUsuarioSe(nome, senha, isMedico):
     try:

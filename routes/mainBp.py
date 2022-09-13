@@ -1,7 +1,7 @@
 from flask import Blueprint
-from ..controllers.medicoesContr import medicaoContr
-from ..controllers.usuariosContr import criaUsuarioContr, adicionaPacienteAMedicoContr
-from ..controllers.indexContr import indexContr
+from controllers.medicoesContr import medicaoContr
+from controllers.usuariosContr import criaUsuarioContr, adicionaPacienteAMedicoContr
+from controllers.indexContr import indexContr
 
 bp = Blueprint('mainBp', __name__)
 

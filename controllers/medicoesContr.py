@@ -1,6 +1,6 @@
 from flask import Response, request
-from ..services.medicoesSe import pegaMedicaoSe, postaMedicaoSe
-from ..utils.validate import  validateStringEssential
+from services.medicoesSe import pegaMedicaoSe, postaMedicaoSe
+from utils.validate import  validateStringEssential
 
 def medicaoContr():
     try:

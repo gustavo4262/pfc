@@ -1,4 +1,4 @@
-from ..conexao import criaConexao
+from conexao import criaConexao
 
 def criaUsuarioRepo(nome, senha, isMedico):
     conn, cur = criaConexao()

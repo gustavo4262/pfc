@@ -1,4 +1,4 @@
-from ..conexao import criaConexao
+from conexao import criaConexao
 
 
 def postaMedicaoRepo(paciente, tipoDados, valor):
