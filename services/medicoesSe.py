@@ -1,9 +1,9 @@
-from repositories.medicoesRepo import pegaMedicaoRepo, postaMedicaoRepo
+from repositories.medicoesRepo import pegaListaPacientesMedicoRepo, pegaMedicaoRepo, postaMedicaoRepo
 from flask import jsonify
 
-def postaMedicaoSe(paciente, tipoDados, valor):
+def postaMedicaoSe(paciente, tipoDados, valor, horario):
 
-    postaMedicaoRepo(paciente, tipoDados, valor)
+    postaMedicaoRepo(paciente, tipoDados, valor, horario)
 
 
 def pegaMedicaoSe(paciente, tipoDados):
@@ -16,3 +16,12 @@ def pegaMedicaoSe(paciente, tipoDados):
 
     return jsonify({'data': data})
 
+def pegaListaPacientesMedicoSe(medico):
+
+    res = pegaListaPacientesMedicoRepo(medico)
+
+    data = []
+    for line in res:
+        data.append({ 'paciente': line[0]})
+
+    return jsonify({'data': data})

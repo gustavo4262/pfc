@@ -1,5 +1,36 @@
 from conexao import criaConexao
 
+
+def fazLoginRepo(nome, senha):
+    conn, cur = criaConexao()
+
+    query1 = f"""
+            select * from "Medico"
+            where "Nome" = '{nome}'
+            and "Senha" = '{senha}'
+            """
+    query2 = f"""
+            select * from "Paciente"
+            where "Nome" = '{nome}'
+            and "Senha" = '{senha}'
+            """
+        
+    cur.execute(query1)
+    medicoRes = cur.fetchone()
+    cur.execute(query2)
+    pacienteRes = cur.fetchone()
+    
+    cur.close()
+    conn.close()
+    
+    if pacienteRes is not None:
+        return "paciente"
+    elif medicoRes is not None:
+        return "medico"
+    else:
+        raise Exception("Not Found")
+
+
 def criaUsuarioRepo(nome, senha, isMedico):
     conn, cur = criaConexao()
 

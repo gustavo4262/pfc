@@ -1,6 +1,30 @@
 from flask import Response, request
-from services.usuarioSe import criaUsuarioSe, adicionaPacienteAMedicoSe
+from services.usuarioSe import fazLoginSe, criaUsuarioSe, adicionaPacienteAMedicoSe
 from utils.validate import validateBooleanEssential, validateStringEssential
+
+def fazLoginContr():
+    try:
+        content = request.get_json()
+        nome = content["nome"]
+        senha = content["senha"]
+        
+        validateStringEssential(nome)
+        validateStringEssential(senha)
+
+        dados = fazLoginSe(nome, senha)
+
+        return dados, 200
+        
+
+    except Exception as e:
+        print(e)
+        if (e.args[0] == "Bad Request"):
+            return Response(status=400)
+        if (e.args[0] == "Not Found"):
+            return Response(status=404)
+        return Response(status=500)
+    
+
 
 def criaUsuarioContr():
     try:
@@ -11,10 +35,7 @@ def criaUsuarioContr():
             
         validateStringEssential(nome)
         validateStringEssential(senha)
-
-        print(isMedico)
         validateBooleanEssential(isMedico)    
-        print('ok')
 
         criaUsuarioSe(nome, senha, isMedico)
         return Response(status=201)

@@ -1,4 +1,16 @@
-from repositories.usuarioRepo import criaUsuarioRepo, adicionaPacienteAMedicoRepo
+from repositories.usuarioRepo import criaUsuarioRepo, adicionaPacienteAMedicoRepo, fazLoginRepo
+from flask import jsonify
+
+def fazLoginSe(nome, senha):
+
+    result = fazLoginRepo(nome, senha)
+
+    if result == "paciente":
+        return jsonify({"isMedic": False})
+    else:
+        return jsonify({"isMedic": True})
+
+
 
 def criaUsuarioSe(nome, senha, isMedico):
     try:

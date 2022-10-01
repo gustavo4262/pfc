@@ -1,7 +1,7 @@
 from conexao import criaConexao
 
 
-def postaMedicaoRepo(paciente, tipoDados, valor):
+def postaMedicaoRepo(paciente, tipoDados, valor, horario):
     conn, cur = criaConexao()
 
     query1 = f"""
@@ -28,7 +28,7 @@ def postaMedicaoRepo(paciente, tipoDados, valor):
 
     query3 = f"""
             insert into "Medicoes" ("TipoDadosID", "PacienteID", "DataTime", "Valor")
-            values ({tipoDadosID}, {pacienteID}, CURRENT_TIMESTAMP, {valor})
+            values ({tipoDadosID}, {pacienteID}, {horario}, {valor})
             """
     
     cur.execute(query3)
@@ -77,3 +77,23 @@ def pegaMedicaoRepo(paciente, tipoDados):
     return res
 
 
+def pegaListaPacientesMedicoRepo(medico):
+    conn, cur = criaConexao()
+    
+    query = f"""
+                select pac."Nome" from  "PacienteMedico"
+                inner join  "Paciente" as pac
+                on "PacienteMedico"."PacienteID" = pac."ID"
+                inner join "Medico" as med
+                on med."ID" = "PacienteMedico"."MedicoID"
+                where med."Nome" = '{medico}'
+            """
+    cur.execute(query)
+    res = cur.fetchall()
+    if res is None:
+        raise Exception("Not Found")
+
+    cur.close()
+    conn.close()
+
+    return res
