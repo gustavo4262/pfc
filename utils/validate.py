@@ -7,5 +7,5 @@ def validateStringEssential(ide):
 
 
 def validateBooleanEssential(ide):
-    if not (ide == "True" or ide == "False"):
+    if not (ide == "1" or ide == "0"):
         raise Exception("Bad Request")

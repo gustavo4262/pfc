@@ -14,7 +14,7 @@ def fazLoginSe(nome, senha):
 
 def criaUsuarioSe(nome, senha, isMedico):
     try:
-        criaUsuarioRepo(nome, senha, isMedico=="True")
+        criaUsuarioRepo(nome, senha, isMedico=="1")
     except Exception as e:
         if 'violates' in e.args[0] and 'constraint' in e.args[0]:
             raise Exception("Conflict")
