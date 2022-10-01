@@ -23,12 +23,6 @@ def medicaoContr():
             valor = content["valor"]
             horario = content["horario"]
             
-            
-            validateStringEssential(paciente)
-            validateStringEssential(tipoDados)
-            validateStringEssential(valor)    
-            validateStringEssential(horario)    
-
             postaMedicaoSe(paciente, tipoDados, valor, horario)
             return Response(status=201)
 

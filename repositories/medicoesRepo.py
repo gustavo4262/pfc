@@ -28,7 +28,7 @@ def postaMedicaoRepo(paciente, tipoDados, valor, horario):
 
     query3 = f"""
             insert into "Medicoes" ("TipoDadosID", "PacienteID", "DataTime", "Valor")
-            values ({tipoDadosID}, {pacienteID}, {horario}, {valor})
+            values ({tipoDadosID}, {pacienteID}, '{horario}', {valor})
             """
     
     cur.execute(query3)
