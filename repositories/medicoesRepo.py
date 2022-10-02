@@ -66,7 +66,7 @@ def pegaMedicaoRepo(paciente, tipoDados):
             select * from "Medicoes"
             where "PacienteID" = {pacienteID}
             and "TipoDadosID" = {tipoDadosID}
-            order by "DataTime" desc
+            order by "DataTime"
             """
     
     cur.execute(query3)
